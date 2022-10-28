@@ -1,8 +1,8 @@
 import os
-import pydub
-from pydub import AudioSegment
 import speech_recognition as sr
 
+# import pydub
+# from pydub import AudioSegment
 # def mp3_to_wav(mp3_filepath):
 #     """
 #     这是MP3文件转化成WAV文件的函数
@@ -24,7 +24,9 @@ def audio_to_text(wav_filepath):
         audio = r.record(source)
     # r.recognize_google(audio)#, language="en-US", show_all=True)
     # r.recognize_bing(audio, show_all=False)
-    r.recognize_sphinx(audio)
+    res = r.recognize_sphinx(audio)
+    with open("result.txt", "w") as f:
+        f.write(res)
     # r.recognize_google()
 
 
